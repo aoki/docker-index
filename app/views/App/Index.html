@@ -1,0 +1,56 @@
+{{set . "title" "Docker Index"}}
+{{template "header.html" .}}
+
+<header class="hero-unit" style="background-color:#23b8eb">
+  <div class="container">
+    <div class="row">
+      <div class="hero-text">
+        <h1 style="color: #ffffff">Docker Index</h1>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+      {{$url := .serverUrl}}
+      <h2><img src="public/img/moby.png">Docker Registryの使いかた</h2>
+      <p>Create the tag for the docker registry.</p>
+      <pre>docker tag [user name]/[repository name]:[tag name] {{$url}}/[user name]/[repository name]:[tag name]</pre>
+      <pre>docker tag ringo/sample:1.0.0 {{$url}}/ringo/sample:1.0.0</pre>
+
+      <p>Push the container to the docker registry.</p>
+      <pre>docker push {{$url}}/ringo/sample:1.0.0</pre>
+
+      <p>Pull the container from the docker registry</p>
+      <pre>docker pull {{$url}}/ringo/sample:1.0.0</pre>
+
+      <h2><img src="public/img/moby.png">Dockerコンテナ一覧</h2>
+        <ul>
+        {{range $i, $user := .users}}
+          <li>
+            {{$user.Name}}
+            <ul>
+              {{range $j, $repo := .Repos}}
+                <li>
+                  {{$repo.Name}}
+                  <ul>
+                    {{range $index, $tag := .Tags}}
+                      <li>{{.}}</li>
+                      <input type="text" value="docker pull {{$url}}/{{$user.Name}}/{{$repo.Name}}:{{$tag}}" size="100" readonly/>
+                    {{end}}
+                  </ul>
+                </li>
+              {{end}}
+            </ul>
+          </li>
+        {{end}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
