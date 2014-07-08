@@ -1,10 +1,7 @@
 package controllers
 
-import (
-	"os"
-
-	"github.com/revel/revel"
-)
+import "os"
+import "github.com/revel/revel"
 import "fmt"
 import "io/ioutil"
 import "regexp"
@@ -20,6 +17,8 @@ func (c App) Index() revel.Result {
 
 	fis, err := ioutil.ReadDir(searchPath)
 	if err != nil {
+		fmt.Println(searchPath)
+		fmt.Println(serverUrl)
 		panic(err)
 	}
 
