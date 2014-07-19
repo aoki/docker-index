@@ -17,7 +17,7 @@
     <div class="span6">
       {{template "flash.html" .}}
       {{$url := .serverUrl}}
-      <h2><img src="public/img/moby.png">Docker Registryの使いかた</h2>
+      <h2><img src="public/img/ref.png">Docker Registryの使いかた</h2>
       <p>Create the tag for the docker registry.</p>
       <pre>docker tag [user name]/[repository name]:[tag name] {{$url}}/[user name]/[repository name]:[tag name]</pre>
       <pre>docker tag ringo/sample:1.0.0 {{$url}}/ringo/sample:1.0.0</pre>
@@ -31,7 +31,7 @@
       <p><a href="http://docs.docker.com/reference/api/registry_api/">Docker Registry API Reference</a></p>
 
 
-      <h2><img src="public/img/moby.png">Dockerコンテナ一覧</h2>
+      <h2><img src="public/img/project.png">Dockerコンテナ一覧</h2>
         <ul>
         {{range $i, $user := .users}}
           <li>
