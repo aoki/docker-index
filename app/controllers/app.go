@@ -13,7 +13,7 @@ type App struct {
 
 func (c App) Index() revel.Result {
 	searchPath := os.Getenv("DOCKER_REPOSITORY_PATH")
-	serverUrl := os.Getenv("DOCKER_REGISTORY_URL")
+	serverUrl := os.Getenv("DOCKER_REGISTRY_URL")
 
 	fis, err := ioutil.ReadDir(searchPath)
 	if err != nil {
